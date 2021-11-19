@@ -205,7 +205,7 @@ int main(int argc, char *argv[]){
 	if (argc < 3){
 
 		if (argc == 2 && argv[1][0] == 'h'){
-			std::cout << "rn: roman numeral converter\nconverts decimal numbers to roman numerals and vice versa\ncommand to run:\n`rn {OPTIONS} dddd`\n where {OPTIONS} are options from the option list below, and dddd can be any number\n\noption list:\ni\toperate inverted, instead of converting to roman numerals, convert from roman numerals\n";
+			std::cout << "rn: roman numeral converter\nconverts decimal numbers to roman numerals and vice versa\nuse `rn <options> dddd'\nwhere dddd can be any number\nmultiple options allowed\npossible options:\nh\tshow help\ni\tinverted operation, instead of converting to roman numerals, convert from roman numerals\n";
 			return 0;
 		}
 
