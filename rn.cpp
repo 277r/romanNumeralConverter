@@ -175,19 +175,43 @@ std::string toRoman(int in){
 
 
 
-std::string alphabet = "MDCLXVI";
-int values[] = {1000, 500, 100, 50, 10, 5, 1};
+std::string alphabet = "IVXLCDM";
+// ordered characters, which work better when mathematically comparing 
+int values[] = {1, 5, 10, 50, 100, 500, 1000};
 int toDecimal(std::string in){
 	
-	int mCount = 0, dCount = 0, cCount = 0, lCount = 0, xCount = 0, vCount = 0, iCount = 0;
-	for (int i = 0; i < in.size(); i++){
-		for (int ii = 0; ii < alphabet.size(); ii++){
-			
-		}
-		
-	}
+	int outputValue = 0;
+
 	
-	return 0;
+	for (int i = 0; i < in.size(); i++){
+		// boundary checking
+		if (i + 1< in.size()){
+			int lhs = alphabet.find_first_of(in[i]);
+			int rhs = alphabet.find_first_of(in[i+1]);
+			
+			if (lhs == std::string::npos || rhs == std::string::npos){
+				return -1;
+			}
+
+			if (rhs > lhs){
+				outputValue += values[rhs];
+				outputValue -= values[lhs];
+				i++;
+			}
+			else {
+				outputValue += values[lhs];
+			}
+		
+		}
+		else {
+			if (alphabet.find_first_of(in[i]) != std::string::npos)
+			outputValue += values[alphabet.find_first_of(in[i])];
+		}
+	}
+	return outputValue;
+	
+	
+	
 }
 
 
@@ -228,7 +252,7 @@ int main(int argc, char *argv[]){
 
 
 	if (operateInverted){
-
+		std::cout << toDecimal(argv[2]);
 	} 
 	else {
 		std::cout << toRoman(std::stoi(argv[2]));
